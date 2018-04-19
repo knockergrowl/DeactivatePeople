@@ -1,12 +1,12 @@
 float angle = 0.0;
 float idista = 35.0;
 float dista = 25.0;
-float desfase = 2.0943951;
+float phase = TWO_PI/3;
 float sphereSize = 8.0;
-int distance = 0;
+
 
 float angx[] = new float[3];
-float angy[] = new float[3];
+float angy[] = new float[3]; 
 
 void setup() {
   size(900, 900);
@@ -19,11 +19,11 @@ void draw() {
   
   noStroke();
   blendMode(MULTIPLY);
-  fill(distance,10);
+  fill(0, 6);
   rect(0,0,width,height);
   blendMode(SCREEN);
 
-  strokeWeight(13);
+  strokeWeight(20);
   stroke((angle*50)%255, 255, 255);
   
   line(mouseX, mouseY, pmouseX, pmouseY);
@@ -39,12 +39,12 @@ void draw() {
   
   
   angx[0] = dista*cos(angle);
-  angx[1] = dista*cos(angle+desfase);
-  angx[2] = dista*cos(angle-desfase);
+  angx[1] = dista*cos(angle+phase);
+  angx[2] = dista*cos(angle-phase);
   
   angy[0] = dista*sin(angle);
-  angy[1] = dista*sin(angle+desfase);
-  angy[2] = dista*sin(angle-desfase);
+  angy[1] = dista*sin(angle+phase);
+  angy[2] = dista*sin(angle-phase);
 
   drawSphere(mouseX, mouseY);
   drawSphere(width-mouseX, mouseY);
